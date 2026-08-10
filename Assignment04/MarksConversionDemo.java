@@ -1,14 +1,17 @@
-public class MarksConversionDemo {
-    public static void main(String[] args) {
-        String[] marksInString = {"85", "90", "78", "88", "95"};
-        int total = 0;
-
-        for (String markStr : marksInString) {
-            int mark = Integer.parseInt(markStr);   // String to Integer (wrapper class) conversion
-            total += mark;
-        }
-
-        System.out.println("Total Marks : " + total);
-        System.out.println("Average     : " + (total / marksInString.length));
-    }
+import java.util.Scanner; 
+public class StudentMarksCalculator { 
+public static void main(String[] args) { 
+Scanner scanner = new Scanner(System.in); 
+String[] markStrings = {"85", "92", "78", "88", "95"}; 
+int totalMarks = 0; 
+System.out.println("--- Subject Marks ---"); 
+for (int i = 0; i < markStrings.length; i++) { 
+Integer mark = Integer.valueOf(markStrings[i]); 
+System.out.println("Subject " + (i + 1) + ": " + mark); 
+totalMarks += mark; 
+} 
+System.out.println("---------------------"); 
+System.out.println("Total Marks: " + totalMarks); 
+scanner.close(); 
+} 
 }
