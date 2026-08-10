@@ -1,31 +1,41 @@
-public class EmployeePayrollDemo {
-    public static void main(String[] args) {
-        String[] empIds = {"E101", "E102"};
-        String[] basicSalaries = {"45000", "-2000"};   // second value is intentionally invalid, to demo validation
-        String[] bonuses = {"5000", "3000"};
-
-        for (int i = 0; i < empIds.length; i++) {
-            try {
-                // Convert entered String values into wrapper objects
-                Double basicSalary = Double.parseDouble(basicSalaries[i]);
-                Double bonus = Double.parseDouble(bonuses[i]);
-
-                // Validation to ensure a valid salary value
-                if (basicSalary <= 0) {
-                    throw new IllegalArgumentException("Basic salary must be positive.");
-                }
-
-                double netSalary = basicSalary + bonus;
-                System.out.println("Employee ID   : " + empIds[i]);
-                System.out.println("Basic Salary  : Rs." + basicSalary);
-                System.out.println("Bonus         : Rs." + bonus);
-                System.out.println("Net Salary    : Rs." + netSalary);
-                System.out.println();
-
-            } catch (IllegalArgumentException e) {
-                System.out.println("Invalid salary for Employee " + empIds[i] + ": " + e.getMessage());
-                System.out.println();
-            }
-        }
-    }
+import java.util.Scanner; 
+public class EmployeePayrollSystem { 
+public static void main(String[] args) { 
+Scanner scanner = new Scanner(System.in); 
+try { 
+System.out.print("Enter Employee ID: "); 
+String empIdStr = scanner.nextLine(); 
+System.out.print("Enter Basic Salary: "); 
+String basicSalaryStr = scanner.nextLine(); 
+System.out.print("Enter Bonus Amount: "); 
+String bonusStr = scanner.nextLine(); 
+Integer empId = Integer.valueOf(empIdStr); 
+Double basicSalary = Double.valueOf(basicSalaryStr); 
+Double bonus = Double.valueOf(bonusStr); 
+if (basicSalary <= 0) { 
+System.out.println("Validation Error: Basic salary must be greater than 0."); 
+return; 
+} 
+if (bonus < 0) { 
+System.out.println("Validation Error: Bonus amount cannot be negative."); 
+return; 
+} 
+double netSalary = basicSalary + bonus; 
+System.out.println("\n================================="); 
+System.out.println("      
+EMPLOYEE PAYROLL SLIP      "); 
+System.out.println("================================="); 
+System.out.println("Employee ID   : " + empId); 
+System.out.println("Basic Salary  : " + basicSalary); 
+System.out.println("Bonus Amount  : " + bonus); 
+System.out.println("---------------------------------"); 
+System.out.println("Net Salary    : " + netSalary); 
+System.out.println("================================="); 
+} catch (NumberFormatException e) { 
+System.out.println("Validation Error: Invalid input format. Please enter valid numeric 
+values."); 
+} finally { 
+scanner.close(); 
+} 
+} 
 }
