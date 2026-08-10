@@ -14,19 +14,19 @@ public class RestaurantBillingDemo {
 }
 
 class RestaurantBilling {
-    static int totalOrders = 0;   // static variable tracking total orders
+    static int totalOrders = 0;
 
-    double calculateBill(double amount) {                               // dine-in
+    double calculateBill(double amount) {                     
         totalOrders++;
         return amount;
     }
 
-    double calculateBill(double amount, double packagingCharge) {       // takeaway
+    double calculateBill(double amount, double packagingCharge) {       
         totalOrders++;
         return amount + packagingCharge;
     }
 
-    double calculateBill(double amount, double deliveryCharge, boolean isDelivery) {   // delivery
+    double calculateBill(double amount, double deliveryCharge, boolean isDelivery) {   
         totalOrders++;
         return amount + deliveryCharge;
     }
